@@ -3,6 +3,5 @@
 Contains the code to run the analyses and generate the results in this project.
 
 The directory contains the following python files:
-* <filename1.py>
-* <filename2.py>
-* <filename3.py>
+* fastqc_load.sh -- updated on 31-03-2023
+* quality.py -- updated on 31-03-2023
