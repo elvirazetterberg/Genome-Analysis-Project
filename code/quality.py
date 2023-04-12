@@ -1,8 +1,8 @@
 import subprocess
 import os
 
-path = os.path.abspath(os.getcwd())
-os.system(". "+path+"/fastqc_load.sh") # load modules
+#path = os.path.abspath(os.getcwd())
+#os.system(". "+path+"/fastqc_load.sh") # load modules
 
 # run fastqc on Illumina reads
 seqfiles = "/home/elze3417/genome_analysis/data/my_genomics_data/Illumina/*.fq.gz"
@@ -18,10 +18,21 @@ input2 = "/home/elze3417/genome_analysis/data/my_genomics_data/Illumina/E745-1.L
 out1trim = "/home/elze3417/genome_analysis/results/trimmomatic/SZAXPI015146-56_1.trimmed.fq "
 out1un = "/home/elze3417/genome_analysis/results/trimmomatic/SZAXPI015146-56_1un.trimmed.fq "
 out2trim = "/home/elze3417/genome_analysis/results/trimmomatic/SZAXPI015146-56_2.trimmed.fq "
-out2un = "/home/elze3417/genome_analysis/results/trimmomatic/SZAXPI015146-56_2un.trimmed.fq"
+out2un = "/home/elze3417/genome_analysis/results/trimmomatic/SZAXPI015146-56_2un.trimmed.fq "
+adapters = "ILLUMINACLIP:/sw/bioinfo/trimmomatic/0.39/rackham/adapters "
+trimlog = "-trimlog /home/elze3417/genome_analysis/results/trimmomatic/trimlog.txt "
+summary = "-summary /home/elze3417/genome_analysis/results/trimmomatic/summary.txt "
+extra = "LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36"
 
-run = "java -jar trimmomatic-0.39.jar PE -trimlog trimlog.txt -summary summary.txt "+input1+input2+out1trim+out1un+out2trim+out2un
+# leading
+# trailing
+# sliding window
+
+# -trimlog trimlog.txt -summary summary.txt ## need to give path there
+run = "trimmomatic PE "+ trimlog + summary + input1 + input2 + out1trim + out1un + out2trim + out2un + adapters + extra
 
 os.system(run)
 
+
 # fastqc again
+# which files are the real output? paired or unpaired?
