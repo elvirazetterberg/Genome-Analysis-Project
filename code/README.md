@@ -1,7 +1,32 @@
-# Directory doodle
+# Directory doodle / code
 
-This directory contains brainstorms and experimental code and results. It should not be included the final product.
+The directory doodle is continually updated with bash scripts for loading, running and submitting jobs to slurm. 
+Once an analysis step has been performed, the doodle directory is cleaned up and rsync-ed to the code directory
+in my project repository. Each computational step has three bash scripts, one for module loading, one for running 
+and another for submitting jobs. This is in order to load once, be able to test the code before submitting a job 
+and organization. They are listed in that order below.
 
-Current issues 31-03-2023 11:32
-- When running the quality.py python script, it says that the bash file cannot be found.
-- Have not been able to run trimmomatic
+The directory contains:
+* pre-processing
+> * prepro_load.sh
+> * quality_trim.sh
+> * jobqual.sh
+
+* assembly
+> * canu_load.sh
+> * assemble_canu.sh
+> * job_canu.sh
+
+* quality report
+> * quast_load.sh
+> * run_quast.sh
+> * job_quast.sh
+
+* polishing assembly
+> * pilon_load.sh
+> * run_pilon.sh
+> * job_pilon.sh
+
+quast_load.sh
+
+

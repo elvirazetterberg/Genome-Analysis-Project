@@ -8,5 +8,6 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user elvira.zetterberg@gmail.com
 
-. assemble_canu.sh
+. pilon_load.sh
+. run_pilon.sh
 

@@ -8,5 +8,12 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user elvira.zetterberg@gmail.com
 
-. assemble_canu.sh
+contigs="/home/elze3417/genome_analysis/results/canu/efaecium.contigs.fasta"
+output="/home/elze3417/genome_analysis/results/quast"
+
+. quast_load.sh
+. run_quast.sh contigs output
+
+
+
 
