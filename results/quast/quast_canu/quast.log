@@ -1,0 +1,115 @@
+/sw/bioinfo/quast/5.0.2/rackham/bin/quast.py /home/elze3417/genome_analysis/results/canu/efaecium.contigs.fasta -r /home/elze3417/genome_analysis/data/ncbi_dataset/data/GCA_009734005.2/GCA_009734005.2_ASM973400v2_genomic.fna -o /home/elze3417/genome_analysis/results/quast
+
+Version: 5.0.2
+
+System information:
+  OS: Linux-3.10.0-1160.88.1.el7.x86_64-x86_64-with-centos-7.9.2009-Core (linux_64)
+  Python version: 3.7.2
+  CPUs number: 16
+
+Started: 2023-04-13 14:25:21
+
+Logging to /home/elze3417/genome_analysis/results/quast/quast.log
+NOTICE: Maximum number of threads is set to 4 (use --threads option to set it manually)
+
+CWD: /domus/h1/elze3417/genome_analysis/doodle
+Main parameters: 
+  MODE: default, threads: 4, minimum contig length: 500, minimum alignment length: 65, \
+  ambiguity: one, threshold for extensive misassembly size: 1000
+
+Reference:
+  /home/elze3417/genome_analysis/data/ncbi_dataset/data/GCA_009734005.2/GCA_009734005.2_ASM973400v2_genomic.fna ==> GCA_009734005.2_ASM973400v2_genomic
+
+Contigs:
+  Pre-processing...
+  /home/elze3417/genome_analysis/results/canu/efaecium.contigs.fasta ==> efaecium.contigs
+
+2023-04-13 14:25:25
+Running Basic statistics processor...
+  Reference genome:
+    GCA_009734005.2_ASM973400v2_genomic.fna, length = 2919198, num fragments = 2, GC % = 37.88
+  Contig files: 
+    efaecium.contigs
+  Calculating N50 and L50...
+    efaecium.contigs, N50 = 2775643, L50 = 1, Total length = 3159448, GC % = 37.78, # N's per 100 kbp =  0.00
+  Drawing Nx plot...
+    saved to /home/elze3417/genome_analysis/results/quast/basic_stats/Nx_plot.pdf
+  Drawing NGx plot...
+    saved to /home/elze3417/genome_analysis/results/quast/basic_stats/NGx_plot.pdf
+  Drawing cumulative plot...
+    saved to /home/elze3417/genome_analysis/results/quast/basic_stats/cumulative_plot.pdf
+  Drawing GC content plot...
+    saved to /home/elze3417/genome_analysis/results/quast/basic_stats/GC_content_plot.pdf
+  Drawing efaecium.contigs GC content plot...
+    saved to /home/elze3417/genome_analysis/results/quast/basic_stats/efaecium.contigs_GC_content_plot.pdf
+Done.
+
+2023-04-13 14:25:27
+Running Contig analyzer...
+  efaecium.contigs
+  Logging to files /home/elze3417/genome_analysis/results/quast/contigs_reports/contigs_report_efaecium-contigs.stdout and contigs_report_efaecium-contigs.stderr...
+  Aligning contigs to the reference
+  /sw/bioinfo/quast/5.0.2/rackham/lib/python3.7/site-packages/quast_libs/minimap2/minimap2 \
+  -c -x asm5 -B5 -O4,16 --no-long-join -r 85 -N 50 -s 65 -z 200 --mask-level 0.9 --min-occ \
+  200 -g 2500 --score-N 2 --cs -t 4 /home/elze3417/genome_analysis/results/quast/quast_corrected_input/GCA_009734005.2_ASM973400v2_genomic.fna \
+  /home/elze3417/genome_analysis/results/quast/quast_corrected_input/efaecium_contigs.fasta \
+  > /home/elze3417/genome_analysis/results/quast/contigs_reports/minimap_output/efaecium-contigs.coords_tmp \
+  2>> /home/elze3417/genome_analysis/results/quast/contigs_reports/contigs_report_efaecium-contigs.stderr
+  Analysis is finished.
+
+  Creating total report...
+    saved to /home/elze3417/genome_analysis/results/quast/contigs_reports/misassemblies_report.txt, misassemblies_report.tsv, and misassemblies_report.tex
+  Transposed version of total report...
+    saved to /home/elze3417/genome_analysis/results/quast/contigs_reports/transposed_report_misassemblies.txt, transposed_report_misassemblies.tsv, and transposed_report_misassemblies.tex
+  Creating total report...
+    saved to /home/elze3417/genome_analysis/results/quast/contigs_reports/unaligned_report.txt, unaligned_report.tsv, and unaligned_report.tex
+  Drawing misassemblies by types plot...
+    saved to /home/elze3417/genome_analysis/results/quast/contigs_reports/misassemblies_plot.pdf
+  Drawing misassemblies FRCurve plot...
+    saved to /home/elze3417/genome_analysis/results/quast/contigs_reports/misassemblies_frcurve_plot.pdf
+Done.
+
+2023-04-13 14:25:30
+Running NA-NGA calculation...
+  efaecium.contigs, Largest alignment = 115727, NA50 = 24552, NGA50 = 30127, LA50 = 32, LGA50 = 27
+  Drawing cumulative plot...
+    saved to /home/elze3417/genome_analysis/results/quast/aligned_stats/cumulative_plot.pdf
+  Drawing NAx plot...
+    saved to /home/elze3417/genome_analysis/results/quast/aligned_stats/NAx_plot.pdf
+  Drawing NGAx plot...
+    saved to /home/elze3417/genome_analysis/results/quast/aligned_stats/NGAx_plot.pdf
+Done.
+
+2023-04-13 14:25:31
+Running Genome analyzer...
+  NOTICE: No file with genomic features were provided. Use the --features option if you want to specify it.
+
+  NOTICE: No file with operons were provided. Use the -O option if you want to specify it.
+  efaecium.contigs
+  Analysis is finished.
+  Skipping drawing Genome fraction, % histogram... (less than 2 columns histogram makes no sense)
+Done.
+
+NOTICE: Genes are not predicted by default. Use --gene-finding or --glimmer option to enable it.
+
+2023-04-13 14:25:32
+Creating large visual summaries...
+This may take a while: press Ctrl-C to skip this step..
+  1 of 2: Creating Icarus viewers...
+  2 of 2: Creating PDF with all tables and plots...
+Done
+
+2023-04-13 14:25:34
+RESULTS:
+  Text versions of total report are saved to /home/elze3417/genome_analysis/results/quast/report.txt, report.tsv, and report.tex
+  Text versions of transposed total report are saved to /home/elze3417/genome_analysis/results/quast/transposed_report.txt, transposed_report.tsv, and transposed_report.tex
+  HTML version (interactive tables and plots) is saved to /home/elze3417/genome_analysis/results/quast/report.html
+  PDF version (tables and plots) is saved to /home/elze3417/genome_analysis/results/quast/report.pdf
+  Icarus (contig browser) is saved to /home/elze3417/genome_analysis/results/quast/icarus.html
+  Log is saved to /home/elze3417/genome_analysis/results/quast/quast.log
+
+Finished: 2023-04-13 14:25:34
+Elapsed time: 0:00:12.968507
+NOTICEs: 4; WARNINGs: 0; non-fatal ERRORs: 0
+
+Thank you for using QUAST!
