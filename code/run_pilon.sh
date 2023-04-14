@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # move to pilon folder to output here
 cd /home/elze3417/genome_analysis/results/pilon
 

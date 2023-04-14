@@ -8,11 +8,11 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user elvira.zetterberg@gmail.com
 
-contigs="/home/elze3417/genome_analysis/results/canu/efaecium.contigs.fasta"
-output="/home/elze3417/genome_analysis/results/quast"
+pilon_contigs="/home/elze3417/genome_analysis/results/pilon/pilon.fasta"
+output="/home/elze3417/genome_analysis/results/quast_pilon"
 
 . quast_load.sh
-. run_quast.sh $contigs $output
+. run_quast.sh $pilon_contigs $output
 
 
 

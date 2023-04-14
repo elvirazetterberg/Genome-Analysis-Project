@@ -16,17 +16,19 @@ The directory contains:
 > * canu_load.sh
 > * assemble_canu.sh
 > * job_canu.sh
+> * spades_load.sh
+> * run_spades.sh
+> * job_spades.sh
 
 * quality report
 > * quast_load.sh
 > * run_quast.sh
 > * job_quast.sh
+> * job_quast_pilon.sh
+> * job_quast_spades.sh
 
 * polishing assembly
 > * pilon_load.sh
 > * run_pilon.sh
 > * job_pilon.sh
-
-quast_load.sh
-
 
