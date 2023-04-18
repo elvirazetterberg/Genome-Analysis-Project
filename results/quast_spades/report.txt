@@ -1,0 +1,53 @@
+All statistics are based on contigs of size >= 500 bp, unless otherwise noted (e.g., "# contigs (>= 0 bp)" and "Total length (>= 0 bp)" include all contigs).
+
+Assembly                     contigs     
+# contigs (>= 0 bp)          175         
+# contigs (>= 1000 bp)       46          
+# contigs (>= 5000 bp)       36          
+# contigs (>= 10000 bp)      27          
+# contigs (>= 25000 bp)      20          
+# contigs (>= 50000 bp)      16          
+Total length (>= 0 bp)       3101862     
+Total length (>= 1000 bp)    3075896     
+Total length (>= 5000 bp)    3047854     
+Total length (>= 10000 bp)   2985047     
+Total length (>= 25000 bp)   2867268     
+Total length (>= 50000 bp)   2724972     
+# contigs                    53          
+Largest contig               458911      
+Total length                 3080955     
+Reference length             2919198     
+GC (%)                       37.64       
+Reference GC (%)             37.88       
+N50                          162629      
+NG50                         198407      
+N75                          102479      
+NG75                         125622      
+L50                          6           
+LG50                         5           
+L75                          11          
+LG75                         10          
+# misassemblies              169         
+# misassembled contigs       20          
+Misassembled contigs length  2682392     
+# local misassemblies        34          
+# scaffold gap ext. mis.     0           
+# scaffold gap loc. mis.     0           
+# unaligned mis. contigs     8           
+# unaligned contigs          17 + 31 part
+Unaligned length             550026      
+Genome fraction (%)          84.052      
+Duplication ratio            1.031       
+# N's per 100 kbp            0.00        
+# mismatches per 100 kbp     382.98      
+# indels per 100 kbp         14.47       
+Largest alignment            137660      
+Total aligned length         2529541     
+NA50                         24242       
+NGA50                        26511       
+NA75                         5028        
+NGA75                        9362        
+LA50                         33          
+LGA50                        29          
+LA75                         88          
+LGA75                        72          
