@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # move to pilon folder to output here
-cd /home/elze3417/genome_analysis/results/pilon
+cd /home/elze3417/genome_analysis/results/canu_pilon
 
 contigs="/home/elze3417/genome_analysis/results/canu/efaecium.contigs.fasta"
 reads="/home/elze3417/genome_analysis/data/my_genomics_data/Illumina/*"
