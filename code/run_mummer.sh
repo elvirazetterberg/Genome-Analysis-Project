@@ -7,4 +7,4 @@ name=$1
 assembly=$2
 
 nucmer -p $name $reference $assembly
-mummerplot -p $name --png -l ./${name}.delta
+mummerplot -p $name --png -l ./${name}.delta #-R ref,-Q assembly? to possibly improve plot
