@@ -2,7 +2,7 @@ all:
 	@echo "Hello Elvira"
 
 git:
-	cd ../Genome-Analysis-Project; echo "Adding and committing"; git add *; git commit -m "$date"; git push
+	cd ../Genome-Analysis-Project; echo "Adding and committing"; git add *; git commit -m "$(shell date)"; git push
 
 codesync:
 	@if compgen -G "slurm*" > /dev/null; then rm slurm*; fi;\
