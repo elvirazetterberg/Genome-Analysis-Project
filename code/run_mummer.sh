@@ -1,10 +1,12 @@
-#!/bin/bash
+#!/bin/bash -l
 
-#nucmer -p namn referens assembly
+canu="/home/elze3417/genome_analysis/results/canu_pilon/pilon.fasta"
+spades="/home/elze3417/genome_analysis/results/spades/contigs.fasta"
+cwd=$(pwd)/run_mummer.sh
 
-reference="/home/elze3417/genome_analysis/data/ncbi_dataset/data/GCA_009734005.2/GCA_009734005.2_ASM973400v2_genomic.fna"
-name=$1
-assembly=$2
 
-nucmer -p $name $reference $assembly
-mummerplot -p $name --png -l ./${name}.delta #-R ref,-Q assembly? to possibly improve plot
+. load_mummer.sh
+
+cd /home/elze3417/genome_analysis/results/mummer
+. $cwd mummer_canu $canu
+. $cwd mummer_spades $spades

@@ -1,5 +1,7 @@
 #!/bin/bash -l
 
+. load_blast.sh
+
 ref="/home/elze3417/genome_analysis/data/ncbi_dataset/data/GCA_009734005.2/GCA_009734005.2_ASM973400v2_genomic.fna"
 db="/home/elze3417/genome_analysis/data/db/ref_db"
 

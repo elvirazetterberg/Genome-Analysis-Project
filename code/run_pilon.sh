@@ -1,5 +1,7 @@
 #!/bin/bash
 
+. load_pilon.sh
+
 # move to pilon folder to output here
 cd /home/elze3417/genome_analysis/results/canu_pilon
 

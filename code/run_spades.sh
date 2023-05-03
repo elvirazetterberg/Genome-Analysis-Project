@@ -1,5 +1,6 @@
 #!/bin/bash
 
+. load_spades.sh
 
 output="/home/elze3417/genome_analysis/results/spades"
 nanoreads="/home/elze3417/genome_analysis/data/my_genomics_data/Nanopore/E745_all.fasta.gz"
