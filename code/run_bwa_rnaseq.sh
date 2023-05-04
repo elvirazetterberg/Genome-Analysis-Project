@@ -10,7 +10,7 @@ pathSerum="/home/elze3417/genome_analysis/data/my_transcriptomics_data/RNA-Seq_S
 bwa index $genome
 
 # BHI
-for file1 in /home/elze3417/genome_analysis/data/my_transcriptomics_data/RNA-Seq_BH/trim_paired_ERR1797974_pass_1*
+for file1 in /home/elze3417/genome_analysis/data/my_transcriptomics_data/RNA-Seq_BH/trim_paired*_pass_1*
 do
 	file2="$(basename "$file1" 1.fastq.gz)2.fastq.gz"
 	base=$(basename "$file1" _pass_1.fastq.gz) 
