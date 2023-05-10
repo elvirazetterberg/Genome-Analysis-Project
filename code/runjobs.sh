@@ -1,6 +1,5 @@
 #!/bin/sh
 sbatch <<EOT
-# run, for example spades, by: . runjobs.sh spades
 
 #!/bin/sh
 #SBATCH -A uppmax2023-2-8 -M snowy
@@ -11,6 +10,6 @@ sbatch <<EOT
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user elvira.zetterberg@gmail.com
 
-. run_${1}.sh # runfile
+. run_${1}.sh
 
 EOT
