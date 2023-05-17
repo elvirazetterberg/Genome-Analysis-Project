@@ -1,5 +1,4 @@
-library(DESeq2, lib.loc = "/sw/apps/R_packages/4.1.1/rackham")
-#library("DESeq2")
+library("DESeq2")
 
 if (!require("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
@@ -8,68 +7,70 @@ BiocManager::install("apeglm")
 BiocManager::install("pcaExplorer")
 library("pcaExplorer")
 library("ggplot2")
+library("pheatmap")
+library("dplyr")
 
 
 #### START ####
-paf <- "/domus/h1/elze3417/genome_analysis/results/htseq/"
-paf <- "."
+paf <- "." # Assumes HTSeq in the current directory.
 
 countFiles <- list.files(path = paf, pattern = "count")
 
 # since they are ordered
 countCondition <- c(rep("Human", length(countFiles)/2), rep("BHI", length(countFiles)/2)) 
 
+# Regular expression to get sample names
 countSamples <- sub("[^ERR1-9]+","\\1", countFiles)
 countSamples <- sub("[_count.csv]+","\\1", countSamples)
 
+# Create a count table with sample names, file names and condition
 countTable <- data.frame(sampleName = countSamples,
                           fileName = countFiles,
                           condition = countCondition)
 
 countTable$condition <- factor(countTable$condition)
 
+# Combine count data with sample table
 ddsHTSeq <- DESeqDataSetFromHTSeqCount(sampleTable = countTable,
                                        directory = paf,
                                        design= ~ condition)
 ddsHTSeq
 
-dds <- DESeq(ddsHTSeq)
-keep <- rowSums(counts(dds)) >= 10 # filter out genes that map 10 or fewer reads
-dds <- dds[keep,]
 
-resultsNames(dds)
-res <- results(dds, name="condition_Human_vs_BHI")
-res
 
-# Shrinking effect size for visualization
-resLFC <- lfcShrink(dds, coef="condition_Human_vs_BHI", type="apeglm")
-resLFC
+dds <- DESeq(ddsHTSeq, minReplicatesForReplace = Inf)
+res <- results(dds, cooksCutoff = FALSE, independentFiltering = FALSE)
 
-# results that have an adjusted p-value < 0.05
-res05 <- results(dds, alpha=0.05)
-summary(res05)
-sum(res05$padj < 0.05, na.rm=TRUE)
+# Plot the log distribution of the original counts
+res_df <- data.frame(res, rownames='Genes')
+ggplot(res_df, aes(x=log(baseMean))) + geom_histogram(fill = '#3a7c85', bins = 50)
+
+# Take out genes with significant differential expression
+res2 <- res[which(res$padj < 0.001), ]
+
+# Replicate paper by removing "fold change greater than 2 or smaller than 0.5" 
+# which equates to log fold change greater than 1 or smaller than -1
+res_3 <- res2[which((res2$log2FoldChange > 1 | res2$log2FoldChange < -1)), ]
+
+# Plot
+plotMA(res_3, ylim=c(-10,10))
+
+# filter out the largest log2foldchange values to check GO-terms for these genes
+res_top_bot <- res2[which((res2$log2FoldChange > 7 | res2$log2FoldChange < -5)), ]
 
 # plot results of log fold changes
-plotMA(res, ylim=c(-2,2))
+plotMA(res_top_bot, ylim=c(-10,10))
 
-# plot adjusted results (removed noise in low counts)
-plotMA(resLFC, ylim=c(-2,2))
+# Normalize data
+ntd <- normTransform(dds)
 
-# interact with the plot
-idx <- identify(res$baseMean, res$log2FoldChange)
-rownames(res)[idx]
+# Select the top 30 genes with highest log2 fold change and make a heat map
+res_top_bot2 <- res_top_bot %>% as_tibble(rownames='Gene')
+genes <- res_top_bot2$Gene
+select <- rownames(dds) %in% genes
+df <- as.data.frame(colData(dds)[,c("condition","sizeFactor")])
+pheatmap(assay(ntd)[select,], cluster_rows=FALSE, show_rownames=TRUE,
+         cluster_cols=FALSE, annotation_col=df)
 
-
-d <- plotCounts(dds, gene=which.min(res$padj), intgroup="condition", 
-                returnData=TRUE)
-
-ggplot(d, aes(x=condition, y=count)) + 
-  geom_point(position=position_jitter(w=0.1,h=0)) + 
-  scale_y_log10(breaks=c(25,100,400))
-
-# PCA explorer -- I don't get it.
-pcaExplorer(dds = dds)
 
 #### END ####
-
